@@ -35,6 +35,7 @@ int	main(void){
 	delete d;
 	delete c;
 	delete w;
+	delete wc;
 	delete a;
 	return (0);
 }
