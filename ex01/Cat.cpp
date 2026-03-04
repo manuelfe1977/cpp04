@@ -4,12 +4,14 @@ Cat::Cat():Animal()
 {
 	std::cout<< "Default constructor Cat called"<<std::endl;
 	this->type = "Cat";
+	this->_brain = new Brain();
 }
 
 Cat::Cat(std::string type):Animal(type)
 {
 	std::cout<< "String constructor Cat called"<<std::endl;
 	this->type = "Cat";
+	this->_brain = new Brain();
 }
 
 Cat::Cat(const Cat &cat):Animal(cat)
@@ -30,6 +32,8 @@ void Cat::makeSound() const
 {
 	std::cout<< "Cat miauuuu"<<std::endl;
 }
+
+void	Cat::setIdea()
 
 Cat::~Cat()
 {
