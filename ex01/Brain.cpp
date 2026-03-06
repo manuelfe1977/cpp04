@@ -25,7 +25,7 @@ Brain &Brain::operator=(const Brain &source)
 {
     int i = 0;
     std::cout<< "Assingment constructor Brain called"<<std::endl;
-    if (this != source)
+    if (this != &source)
     {
         while(i <= 99)
         {
@@ -34,6 +34,24 @@ Brain &Brain::operator=(const Brain &source)
         }
     }
     return *this;
+}
+
+void	Brain::setIdea(unsigned int index, std::string idea)
+{
+	if (index <= 99)
+	{
+		this->ideas[index] = idea;
+	}
+}
+
+std::string	Brain::getIdea(unsigned int index)
+{
+	if (index <= 99)
+	{
+		return (this->ideas[index]);
+	}
+	else
+		return NULL;
 }
 
 Brain::~Brain()

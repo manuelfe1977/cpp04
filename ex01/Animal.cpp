@@ -15,6 +15,7 @@ Animal::Animal(std::string type)
 Animal::Animal(const Animal &animal)
 {
 	*this = animal;
+	this->type = animal.type;
 	std::cout<< "Copy constructor Animal called"<<std::endl;
 }
 

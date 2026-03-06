@@ -14,8 +14,8 @@ public:
 	Cat(const Cat &cat);
 	Cat &operator=(const Cat &cat);
 	void	makeSound() const;
-	void	setIdea(int index, std::string idea)
-	std::string	getIdeas(int index);
+	void	setIdea(unsigned int index, std::string idea);
+	std::string	getIdeas(unsigned int index);
 	~Cat();
 };
 
