@@ -1,42 +1,103 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
 int	main(void){
 
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const Dog *d = new Dog();
-	const Cat *c = new Cat();
-	const Animal *a = new Cat();
-	const WrongAnimal *w = new WrongAnimal();
-	const WrongAnimal *wc = new WrongCat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << a->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	a->makeSound();
-	meta->makeSound();
-	std::cout << d->getType() << " " << std::endl;
-	std::cout << c->getType() << " " << std::endl;
-	c->makeSound();
-	d->makeSound();
-	std::cout << w->getType() << " " << std::endl;
-	std::cout << wc->getType() << " " << std::endl;
-	w->makeSound();
-	wc->makeSound();
-	delete meta;
-	delete j;
-	delete i;
-	delete d;
-	delete c;
-	delete w;
-	delete wc;
-	delete a;
+	Animal*	animals[10];
+	int	i = 0;
+
+	while (i <= 9)
+	{
+		if (i >= 5)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+		i++;
+	}
+	i = 0;
+	while (i <= 9)
+	{
+		animals[i]->makeSound();
+		i++;
+	}
+	i = 0;
+	while (i <= 9)
+	{
+		delete animals[i];
+		i++;
+	}
+	Dog a("perro");
+	a.setIdea(0,"comer");
+	a.setIdea(1,"dormir");
+	a.setIdea(2,"buscar hueso");
+	i = 0;
+	while (i <= 2)
+	{
+		std::cout<<a.getType() << " tiene esta idea " << a.getIdeas(i)<<std::endl;
+		i++;
+	}
+
+	Dog b(a);
+	i = 0;
+	while (i <= 2)
+	{
+		std::cout<<b.getType() << " tiene esta idea " << b.getIdeas(i)<<std::endl;
+		i++;
+	}
+	a.setIdea(2, "buscar pescado");
+	std::cout<<a.getType() << " tiene esta idea " << a.getIdeas(2)<<std::endl;
+	std::cout<<b.getType() << " tiene esta idea " << b.getIdeas(2)<<std::endl;
+
+
+	Cat c("gato");
+	c.setIdea(0,"comer");
+	c.setIdea(1,"dormir");
+	c.setIdea(2,"buscar pescado");
+	i = 0;
+	while (i <= 2)
+	{
+		std::cout<<c.getType() << " tiene esta idea " << c.getIdeas(i)<<std::endl;
+		i++;
+	}
+
+	Cat cc(c);
+	i = 0;
+	while (i <= 2)
+	{
+		std::cout<<cc.getType() << " tiene esta idea " << cc.getIdeas(i)<<std::endl;
+		i++;
+	}
+	c.setIdea(2, "buscar arenero");
+	std::cout<<c.getType() << " tiene esta idea " << c.getIdeas(2)<<std::endl;
+	std::cout<<cc.getType() << " tiene esta idea " << cc.getIdeas(2)<<std::endl;
+
+	Cat asig;
+	asig = c;
+	i = 0;
+	while (i <= 2)
+	{
+		std::cout<<asig.getType() << " tiene esta idea " << asig.getIdeas(i)<<std::endl;
+		i++;
+	}
+	c.setIdea(2, "buscar sardinas");
+	std::cout<<c.getType() << " tiene esta idea " << c.getIdeas(2)<<std::endl;
+	std::cout<<asig.getType() << " tiene esta idea " << asig.getIdeas(2)<<std::endl;
+
+	asig.setIdea(100,"fuera de rango");
+	std::cout<<asig.getType() << " tiene esta idea fuera de rango" << asig.getIdeas(100)<<std::endl;
+
+	Dog asig_d;
+	asig_d = a;
+	i = 0;
+	while (i <= 2)
+	{
+		std::cout<<asig_d.getType() << " tiene esta idea " << asig_d.getIdeas(i)<<std::endl;
+		i++;
+	}
+	a.setIdea(2, "buscar parque");
+	std::cout<<a.getType() << " tiene esta idea " << a.getIdeas(2)<<std::endl;
+	std::cout<<asig_d.getType() << " tiene esta idea " << asig_d.getIdeas(2)<<std::endl;
 	return (0);
 }
 

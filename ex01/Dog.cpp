@@ -17,14 +17,20 @@ Dog::Dog(std::string type):Animal(type)
 Dog::Dog(const Dog &dog):Animal(dog)
 {
 	std::cout<< "Copy constructor Dog called"<<std::endl;
-	this->type = "Dog";
+	this->_brain = new Brain();
+	*this->_brain = *dog._brain;
 }
 
 Dog	&Dog::operator=(const Dog &dog)
 {
-	std::cout<< "Assignment constructor Dog called"<<std::endl;
-	Animal::operator=(dog);
-	this->type = "Dog";
+	if (this != &dog)
+	{
+		std::cout<< "Assignment constructor Dog called"<<std::endl;
+		Animal::operator=(dog);
+		delete this->_brain;
+		this->_brain = new Brain();
+		*this->_brain = *dog._brain;
+	}
 	return *this;
 }
 
@@ -45,5 +51,6 @@ std::string	Dog::getIdeas(unsigned int index)
 
 Dog::~Dog()
 {
+	delete this->_brain;
 	std::cout<< "Destructor Dog called"<<std::endl;
 }

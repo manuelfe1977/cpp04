@@ -23,10 +23,14 @@ Cat::Cat(const Cat &cat):Animal(cat)
 
 Cat	&Cat::operator=(const Cat &cat)
 {
-	std::cout<< "Assignment constructor Cat called"<<std::endl;
-	Animal::operator=(cat);
-	this->_brain = new Brain();
-	*this->_brain = *cat._brain;
+	if (this != &cat)
+	{
+		std::cout<< "Assignment constructor Cat called"<<std::endl;
+		Animal::operator=(cat);
+		delete this->_brain;
+		this->_brain = new Brain();
+		*this->_brain = *cat._brain;
+	}
 	return *this;
 }
 
@@ -47,5 +51,6 @@ std::string	Cat::getIdeas(unsigned int index)
 
 Cat::~Cat()
 {
+	delete this->_brain;
 	std::cout<< "Destructor Cat called"<<std::endl;
 }

@@ -7,6 +7,7 @@ Brain::Brain()
 
 Brain::Brain(std::string brain)
 {
+	(void)brain;
     std::cout<< "String constructor Brain called"<<std::endl;
 }
 
@@ -51,7 +52,7 @@ std::string	Brain::getIdea(unsigned int index)
 		return (this->ideas[index]);
 	}
 	else
-		return NULL;
+		return "";
 }
 
 Brain::~Brain()
